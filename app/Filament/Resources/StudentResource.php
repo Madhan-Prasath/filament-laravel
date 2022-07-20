@@ -17,6 +17,7 @@ use App\Filament\Resources\StudentResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 use App\Filament\Resources\StudentResource\RelationManagers;
+use AlperenErsoy\FilamentExport\Actions\FilamentExportBulkAction;
 use Heloufir\FilamentWorkflowManager\Tables\Columns\WorkflowStatusColumn;
 use Heloufir\FilamentWorkflowManager\Forms\Components\WorkflowStatusInput;
 
@@ -80,6 +81,7 @@ class StudentResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
+                FilamentExportBulkAction::make('export')
             ]);
     }
 
