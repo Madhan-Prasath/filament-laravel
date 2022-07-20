@@ -18,6 +18,7 @@ use App\Filament\Resources\UserResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\BelongsToManyMultiSelect;
 use App\Filament\Resources\UserResource\RelationManagers;
+use AlperenErsoy\FilamentExport\Actions\FilamentExportBulkAction;
 use Heloufir\FilamentWorkflowManager\Resources\UserResource\WorkflowPermissions;
 
 class UserResource extends Resource
@@ -68,6 +69,7 @@ class UserResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
+                FilamentExportBulkAction::make('export')
             ]);
     }
 
