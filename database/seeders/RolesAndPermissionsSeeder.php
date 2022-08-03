@@ -21,31 +21,35 @@ class RolesAndPermissionsSeeder extends Seeder
         // Reset cached roles and permissions
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
-        // create permissions
+        // create Permission permissions
         Permission::create(['name' => 'view permissions',    'guard_name' => 'web']);
         Permission::create(['name' => 'viewAny permissions', 'guard_name' => 'web']);
         Permission::create(['name' => 'create permissions',  'guard_name' => 'web']);
         Permission::create(['name' => 'edit permissions',    'guard_name' => 'web']);
         Permission::create(['name' => 'delete permissions',  'guard_name' => 'web']);
 
+        // create Role permissions
         Permission::create(['name' => 'view roles',     'guard_name' => 'web']);
         Permission::create(['name' => 'viewAny roles',  'guard_name' => 'web']);
         Permission::create(['name' => 'create roles',   'guard_name' => 'web']);
         Permission::create(['name' => 'edit roles',     'guard_name' => 'web']);
         Permission::create(['name' => 'delete roles',   'guard_name' => 'web']);
 
+        // create Student permissions
         Permission::create(['name' => 'view students',    'guard_name' => 'web']);
         Permission::create(['name' => 'viewAny students', 'guard_name' => 'web']);
         Permission::create(['name' => 'create students',  'guard_name' => 'web']);
         Permission::create(['name' => 'edit students',    'guard_name' => 'web']);
         Permission::create(['name' => 'delete students',  'guard_name' => 'web']);
 
+        // create User permissions
         Permission::create(['name' => 'view users',   'guard_name'  => 'web']);
         Permission::create(['name' => 'viewAny users', 'guard_name' => 'web']);
         Permission::create(['name' => 'create users', 'guard_name'  => 'web']);
         Permission::create(['name' => 'edit users',   'guard_name'  => 'web']);
         Permission::create(['name' => 'delete users', 'guard_name'  => 'web']);
 
+        // create Workflow permissions
         Permission::create(['name' => 'view workflows',   'guard_name'  => 'web']);
         Permission::create(['name' => 'viewAny workflows', 'guard_name' => 'web']);
         Permission::create(['name' => 'create workflows', 'guard_name'  => 'web']);
@@ -98,17 +102,17 @@ class RolesAndPermissionsSeeder extends Seeder
         $this->command->info('Roles and Permissions granted to Role Admin');
 
         // create Permission User with default permissions
-        $userPermission = Permission::create(['name' => 'Permission User']);
+        $userPermission = Role::create(['name' => 'Permission User']);
         $userPermission->givePermissionTo(['view permissions', 'viewAny permissions', 'create permissions']);
         $this->command->info('permissions and Permissions granted to Permission User');
 
         // create Permission Manager Permission with default permissions
-        $managerPermission = Permission::create(['name' => 'Permission Manager']);
+        $managerPermission = Role::create(['name' => 'Permission Manager']);
         $managerPermission->givePermissionTo(['view permissions', 'viewAny permissions', 'create permissions', 'edit permissions']);
         $this->command->info('permissions and Permissions granted to Permission Manager');
 
         // create Permission Admin with default permissions
-        $adminPermission = Permission::create(['name' => 'Permission Admin']);
+        $adminPermission = Role::create(['name' => 'Permission Admin']);
         $adminPermission->givePermissionTo(['view permissions', 'viewAny permissions', 'create permissions', 'edit permissions', 'delete permissions']);
         $this->command->info('permissions and Permissions granted to Permission Admin');
 
